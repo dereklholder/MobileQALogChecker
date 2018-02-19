@@ -2,19 +2,34 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:fields="clr-namespace:MobileQALogChecker.DataTools"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Mobile QA Log Parser" Height="629.395" Width="830.975" Icon="256.png">
     <Grid>
         <Grid.DataContext>
             <fields:FieldDataViewModel />
         </Grid.DataContext>
-        <ListBox x:Name="fieldsToValidateListView" HorizontalAlignment="Left" Height="207" Margin="10,103,0,0" VerticalAlignment="Top" Width="318" ItemsSource="{Binding Path=Fields}" DisplayMemberPath="Name">
-            
-        </ListBox>
-        <Grid x:Name="logFileBrowserGrid" Margin="10,41,10,231">
+        <!--<ListBox x:Name="fieldsToValidateListView" HorizontalAlignment="Left" Height="441" Margin="10,148,0,0" VerticalAlignment="Top" Width="225" ItemsSource="{Binding Path=Fields}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Name}"/>
+                        <CheckBox IsChecked="{Binding ToValidate, Mode=TwoWay}" Margin="10,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
+        <Grid x:Name="logFileBrowserGrid" Margin="10,41,10,0" Height="48" VerticalAlignment="Top">
             <TextBox x:Name="logFileBrowserPathText" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="407" Margin="0,0,0,15"/>
             <Button x:Name="logFileBrowseButton" Content="Browse" HorizontalAlignment="Left" Margin="412,0,0,16" VerticalAlignment="Bottom" Width="75" Click="logFileBrowseButton_Click"/>
         </Grid>
         <Label x:Name="logFileLabel" Content="Log File:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="transactionIDOrderIDBox" HorizontalAlignment="Left" Height="23" Margin="10,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="transactionIDOrderIDLabel" Content="TransactionID/OrderID:" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="findTransactionButton" Content="Find Transaction" HorizontalAlignment="Left" Margin="135,121,0,0" VerticalAlignment="Top" Width="100" Click="findTransactionButton_Click"/>
+        <TextBox x:Name="transactionXMLTextBox" Margin="10,184,564,10" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
+        <TreeView x:Name="xmlTreeView" Margin="264,184,10,10"/>
+        <Label x:Name="rawXmlLabel" Content="Raw XML" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="xmlNodesLabel" Content="Xml Nodes:" HorizontalAlignment="Left" Margin="264,153,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="resetButton" Content="Reset" HorizontalAlignment="Left" Margin="240,121,0,0" VerticalAlignment="Top" Width="75" Click="resetButton_Click"/>
 
     </Grid>
 </Window>
